@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNBEATABLE</title>
+    <meta
+      name="description"
+      content="I'M UNBEATABLE. I CAN'T BE BEAT. The official UNBEATABLE meme coin portal."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; }
+      :root { --bg-0:#090a0d; --bg-1:#14171f; --bg-2:#222734; --text:#d7dbe4; --muted:#8e95a7; --line:#2e3340; --accent:#d4d8e6; }
+      html,body { margin:0; padding:0; font-family:"Inter",system-ui,sans-serif; background:radial-gradient(circle at 50% 30%,var(--bg-2),var(--bg-1) 45%,var(--bg-0)); color:var(--text); }
+      .hidden { opacity:0; pointer-events:none; } .intro { position:fixed; inset:0; background:#000; z-index:20; transition:opacity 1.1s ease; }
+      .intro.fade-out { opacity:0; pointer-events:none; } .intro-video { width:100%; height:100%; object-fit:cover; opacity:.85; }
+      .intro-overlay { position:absolute; inset:0; display:grid; place-items:center; background:radial-gradient(circle at center,transparent 40%,rgba(0,0,0,.65)); }
+      .intro-text { margin:0; text-align:center; font-size:clamp(1rem,2.4vw,1.7rem); letter-spacing:.18em; font-weight:700; }
+      .skip-btn { position:absolute; right:1rem; bottom:1rem; border:1px solid #61697e; background:rgba(10,10,14,.65); color:var(--text); padding:.55rem .95rem; cursor:pointer; }
+      .site { transition:opacity 1s ease; } .site.show { opacity:1; pointer-events:auto; }
+      .section { max-width:1080px; margin:0 auto; padding:clamp(3rem,8vw,6rem) 1.2rem; }
+      .hero { position:relative; text-align:center; min-height:95vh; display:grid; align-content:center; gap:1rem; }
+      .bg-shadow { position:absolute; inset:0; background:radial-gradient(circle at 50% 42%,rgba(103,111,136,.25),transparent 55%); filter:blur(14px); z-index:-1; }
+      .hero-logo { width:min(64vw,420px); margin:0 auto; border-radius:14px; }
+      h1,h2 { margin:0; font-weight:900; letter-spacing:.03em; } h1 { font-size:clamp(1.5rem,4vw,3rem); } h2 { font-size:clamp(1.3rem,3vw,2rem); }
+      .subtitle { margin:0; color:var(--muted); } .cta-row { display:flex; justify-content:center; gap:.8rem; flex-wrap:wrap; }
+      .btn { text-decoration:none; border:1px solid var(--line); padding:.75rem 1.1rem; font-weight:700; letter-spacing:.04em; }
+      .btn-primary { background:#d5d9e8; color:#11151f; } .btn-secondary { color:#d5d9e8; }
+      .split { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+      .panel { border:1px solid var(--line); padding:1.3rem; min-height:220px; background:rgba(9,11,18,.65); }
+      .panel.beatable { background:linear-gradient(170deg,rgba(63,32,36,.25),rgba(9,11,18,.65)); }
+      .panel.unbeatable { background:linear-gradient(170deg,rgba(38,42,59,.5),rgba(9,11,18,.65)); }
+      .protocol-grid { margin-top:1.2rem; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.7rem; }
+      .token { border:1px solid var(--line); padding:.85rem; text-align:center; font-size:.88rem; letter-spacing:.09em; background:rgba(12,15,22,.75); }
+      .final { text-align:center; } .manifest { color:var(--muted); line-height:1.55; }
+      .contract-box { margin:1.2rem auto 0; max-width:720px; border:1px solid var(--line); padding:1rem; background:rgba(8,10,15,.72); }
+      .contract-label { margin:0; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; font-size:.78rem; }
+      .contract-value { margin:.45rem 0 .8rem; font-size:clamp(.75rem,2vw,.95rem); letter-spacing:.05em; word-break:break-all; }
+      .contract-btn { background:transparent; } .copy-status { min-height:1.2rem; margin:.6rem 0 0; color:#b8c4e6; font-size:.82rem; }
+      .links { margin-top:1rem; display:flex; justify-content:center; gap:.7rem; }
+      .links a { display:inline-block; border:1px solid var(--line); width:2.5rem; height:2.5rem; line-height:2.4rem; text-decoration:none; color:var(--accent); }
+      .closing-line { margin-top:1.2rem; letter-spacing:.2em; font-weight:700; font-size:.9rem; }
+    </style>
+  </head>
+  <body>
+    <div id="intro" class="intro">
+      <video id="introVideo" class="intro-video" autoplay muted playsinline>
+        <source src="./assets/intro.mp4" type="video/mp4" />
+      </video>
+      <div class="intro-overlay">
+        <p class="intro-text">I'M UNBEATABLE. I CAN'T BE BEAT.</p>
+      </div>
+      <button id="skipIntro" class="skip-btn" type="button">Skip</button>
+    </div>
+
+    <main id="site" class="site hidden">
+      <section class="section hero">
+        <div class="bg-shadow"></div>
+        <img class="hero-logo" src="./assets/hero_logo_1x1.png" alt="Unbeatable logo" />
+        <h1>I'M UNBEATABLE. I CAN'T BE BEAT.</h1>
+        <p class="subtitle">Not a hero. Not a villain. A state of mind.</p>
+        <div class="cta-row">
+          <a href="#lore" class="btn btn-primary">Enter Unbeaten Mode</a>
+          <a href="#community" class="btn btn-secondary">Join Community</a>
+        </div>
+      </section>
+
+      <section id="lore" class="section split">
+        <article class="panel beatable">
+          <h2>Beatable</h2>
+          <p>Lives from outside validation. Burns in FOMO. Breaks on the first red candle.</p>
+        </article>
+        <article class="panel unbeatable">
+          <h2>Unbeatable</h2>
+          <p>Uses chaos as fuel. Stays focused. No flinch under pressure.</p>
+        </article>
+      </section>
+
+      <section class="section protocol">
+        <h2>Unbeatable Protocol</h2>
+        <div class="protocol-grid">
+          <div class="token">CAN'T BE BEAT</div>
+          <div class="token">UNBEATEN MODE</div>
+          <div class="token">NO FLINCH</div>
+          <div class="token">STAY UNBEATABLE</div>
+        </div>
+      </section>
+
+      <section id="community" class="section final">
+        <h2>Join The Entity</h2>
+        <p class="manifest">
+          When everything was designed to break you, something learned not to break.
+          <br />
+          They called it many things. We call it Unbeatable.
+        </p>
+        <div class="contract-box">
+          <p class="contract-label">Contract</p>
+          <p id="contractValue" class="contract-value">0xUNBEATABLE0000000000000000000000000000</p>
+          <button id="copyContract" class="btn btn-secondary contract-btn" type="button">
+            Copy CA
+          </button>
+          <p id="copyStatus" class="copy-status" aria-live="polite"></p>
+        </div>
+        <div class="links">
+          <a href="#" aria-label="Twitter / X">X</a>
+          <a href="#" aria-label="Telegram">TG</a>
+          <a href="#" aria-label="Dex">DEX</a>
+          <a href="#" aria-label="Contract">CA</a>
+        </div>
+        <p class="closing-line">STAY UNBEATABLE.</p>
+      </section>
+    </main>
+
+    <script>
+      const intro = document.getElementById("intro");
+      const introVideo = document.getElementById("introVideo");
+      const skipIntro = document.getElementById("skipIntro");
+      const site = document.getElementById("site");
+      const copyContract = document.getElementById("copyContract");
+      const contractValue = document.getElementById("contractValue");
+      const copyStatus = document.getElementById("copyStatus");
+      let isDone = false;
+      function revealSite() {
+        if (isDone) return;
+        isDone = true;
+        intro.classList.add("fade-out");
+        site.classList.remove("hidden");
+        requestAnimationFrame(() => site.classList.add("show"));
+      }
+      skipIntro.addEventListener("click", revealSite);
+      introVideo.addEventListener("ended", revealSite);
+      introVideo.addEventListener("error", revealSite);
+      setTimeout(revealSite, 14000);
+      if (copyContract && contractValue && copyStatus) {
+        copyContract.addEventListener("click", async () => {
+          const value = contractValue.textContent?.trim();
+          if (!value) return;
+          try { await navigator.clipboard.writeText(value); copyStatus.textContent = "Contract copied."; }
+          catch { copyStatus.textContent = "Copy failed. Please copy manually."; }
+        });
+      }
+    </script>
+  </body>
+</html>
