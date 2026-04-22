@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UNBEATABLE</title>
+    <meta
+      name="description"
+      content="I'M UNBEATABLE. I CAN'T BE BEAT. The official UNBEATABLE portal."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Space+Grotesk:wght@500;600;700&family=Unbounded:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { box-sizing: border-box; }
+      :root {
+        --bg-0: #06070A;
+        --bg-1: #0E1118;
+        --bg-2: #171B26;
+        --bg-3: #232838;
+        --text: #E3E6EE;
+        --muted: #8E95A7;
+        --line: rgba(255,255,255,0.08);
+        --line-strong: rgba(255,255,255,0.14);
+        --accent: #C9CDDB;
+        --violet: #7C6BFF;
+        --crimson: #B43A4A;
+        --font-body: "Inter", system-ui, sans-serif;
+        --font-display: "Unbounded", "Space Grotesk", "Inter", sans-serif;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        font-family: var(--font-body);
+        color: var(--text);
+        min-height: 100%;
+        background: var(--bg-0);
+        overflow-x: hidden;
+      }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: -10%;
+        z-index: -2;
+        background:
+          radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,255,255,.10), transparent 60%),
+          radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,0,0,.6), transparent 65%),
+          linear-gradient(180deg, #0A0A0C 0%, #050506 60%, #020203 100%);
+        animation: bgShift 26s ease-in-out infinite alternate;
+        filter: grayscale(1);
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background:
+          radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%),
+          repeating-linear-gradient(0deg, rgba(255,255,255,.015) 0 1px, transparent 1px 3px);
+        mix-blend-mode: overlay;
+      }
+      @keyframes bgShift {
+        0%   { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(0, -1.2%, 0); }
+      }
+      a { color: inherit; text-decoration: none; }
+
+      /* INTRO */
+      .intro {
+        position: fixed;
+        inset: 0;
+        background: #000;
+        z-index: 30;
+        transition: opacity 1.1s ease;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .intro.fade-out { opacity: 0; pointer-events: none; }
+      .intro-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        background: #000;
+      }
+      .sound-hint {
+        position: absolute;
+        left: 50%;
+        bottom: 6%;
+        transform: translateX(-50%);
+        padding: .55rem .95rem;
+        border: 1px solid rgba(255,255,255,.18);
+        background: rgba(0,0,0,.45);
+        backdrop-filter: blur(8px);
+        color: #fff;
+        font-family: var(--font-body);
+        font-size: .78rem;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        opacity: .85;
+        transition: opacity .6s ease, transform .6s ease;
+        pointer-events: none;
+      }
+      .sound-hint.hidden { opacity: 0; transform: translate(-50%, 8px); }
+
+      /* SITE */
+      .site { opacity: 1; }
+
+      .mini-video {
+        width: min(92vw, 640px);
+        aspect-ratio: 16 / 9;
+        margin: 1.6rem auto 0;
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        border: 1px solid var(--line-strong);
+        background: #000;
+        box-shadow: 0 24px 70px rgba(0,0,0,.6);
+      }
+      .mini-video video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.06);
+        transform-origin: center center;
+        display: block;
+        filter: grayscale(1) contrast(1.05);
+        cursor: pointer;
+      }
+      .sound-toggle {
+        position: absolute;
+        right: .8rem;
+        bottom: .8rem;
+        z-index: 2;
+        padding: .5rem .8rem;
+        font-family: var(--font-body);
+        font-size: .68rem;
+        letter-spacing: .25em;
+        font-weight: 700;
+        color: #fff;
+        background: rgba(0,0,0,.55);
+        border: 1px solid rgba(255,255,255,.25);
+        border-radius: 999px;
+        backdrop-filter: blur(6px);
+        cursor: pointer;
+        transition: background .3s ease, border-color .3s ease, opacity .4s ease;
+      }
+      .sound-toggle:hover {
+        background: rgba(0,0,0,.75);
+        border-color: rgba(255,255,255,.5);
+      }
+      .sound-toggle.on { opacity: .4; }
+      .sound-toggle.on:hover { opacity: 1; }
+
+      .section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: clamp(3rem, 8vw, 6rem) 1.2rem;
+        position: relative;
+      }
+
+      h1, h2, .eyebrow, .closing-line, .token, .contract-label {
+        font-family: var(--font-display);
+      }
+      h1, h2 {
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        line-height: 1.05;
+      }
+      h1 {
+        font-size: clamp(1.8rem, 5vw, 3.6rem);
+        letter-spacing: 0.05em;
+        background: linear-gradient(180deg, #FFFFFF 0%, #BDBDBD 55%, #6A6A6A 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: 0 0 60px rgba(255,255,255,.06);
+      }
+      h2 {
+        font-size: clamp(1.3rem, 3vw, 2.1rem);
+        letter-spacing: 0.04em;
+        background: linear-gradient(180deg, #EDEDED 0%, #9A9A9A 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: .75rem;
+        letter-spacing: .34em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: .4rem .75rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255,255,255,.02);
+      }
+      .subtitle {
+        margin: 0;
+        color: var(--muted);
+        letter-spacing: .04em;
+      }
+
+      /* HERO */
+      .hero {
+        text-align: center;
+        min-height: 100vh;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 1.2rem;
+        padding-top: clamp(4rem, 10vw, 7rem);
+      }
+      .hero-logo-wrap {
+        position: relative;
+        width: min(62vw, 360px);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+      }
+      .hero-logo-wrap::before {
+        content: "";
+        position: absolute;
+        inset: -18%;
+        background: radial-gradient(closest-side, rgba(255,255,255,.22), transparent 70%);
+        filter: blur(30px);
+        z-index: 0;
+        animation: pulse 6s ease-in-out infinite;
+      }
+      .hero-logo-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        background: url('./assets/shadow_double_art.png') center/contain no-repeat;
+        opacity: 0.14;
+        filter: blur(3px);
+        transform: scale(1.25);
+        z-index: 0;
+      }
+      .hero-logo {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 18px;
+        border: 1px solid var(--line-strong);
+        filter: grayscale(1) contrast(1.05);
+        box-shadow:
+          0 30px 80px rgba(0,0,0,.6),
+          inset 0 0 0 1px rgba(255,255,255,.04);
+        z-index: 1;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: .75; transform: scale(1); }
+        50%      { opacity: 1;   transform: scale(1.06); }
+      }
+
+      /* generic "liquid" card */
+      .card {
+        position: relative;
+        isolation: isolate;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.01)) padding-box,
+          linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,0) 40%, rgba(255,255,255,.08) 90%) border-box;
+        background-clip: padding-box, border-box;
+        border: 1px solid transparent;
+        overflow: hidden;
+        transition: transform .5s ease, box-shadow .5s ease;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: conic-gradient(
+          from 0deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,.55) 25%,
+          rgba(255,255,255,.12) 50%,
+          rgba(255,255,255,0) 75%,
+          rgba(255,255,255,.4) 100%
+        );
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+                mask-composite: exclude;
+        opacity: 0;
+        transition: opacity .6s ease;
+        animation: spin 9s linear infinite;
+        pointer-events: none;
+      }
+      .card:hover { transform: translateY(-3px); box-shadow: 0 20px 60px rgba(0,0,0,.55); }
+      .card:hover::before { opacity: 1; }
+      @keyframes spin { to { transform: rotate(1turn); } }
+
+      /* LORE */
+      .split {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+      }
+      .panel {
+        position: relative;
+        padding: 1.6rem;
+        min-height: 320px;
+        background-size: cover;
+        background-position: center;
+        color: var(--text);
+      }
+      .panel > * { position: relative; z-index: 2; }
+      .panel::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        transition: opacity .5s ease;
+      }
+      .panel {
+        filter: grayscale(1) contrast(1.05);
+      }
+      .panel.beatable { background-image: url('./assets/beatable_panel.png'); }
+      .panel.beatable::after {
+        background:
+          radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.10), transparent 60%),
+          linear-gradient(175deg, rgba(18,18,20,.55) 0%, rgba(4,4,5,.9) 100%);
+      }
+      .panel.unbeatable { background-image: url('./assets/unbeatable_panel.png'); }
+      .panel.unbeatable::after {
+        background:
+          radial-gradient(ellipse at 80% 10%, rgba(255,255,255,.08), transparent 60%),
+          linear-gradient(175deg, rgba(14,14,16,.5) 0%, rgba(3,3,4,.92) 100%);
+      }
+      .panel p { color: #D3D3D3; line-height: 1.55; margin: .6rem 0 0; }
+
+      /* PROTOCOL */
+      .protocol-head { display: flex; flex-direction: column; gap: .9rem; align-items: flex-start; }
+      .protocol-grid {
+        margin-top: 1.4rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: .8rem;
+      }
+      .token {
+        position: relative;
+        padding: 1.15rem 1rem;
+        text-align: center;
+        font-size: .88rem;
+        letter-spacing: .14em;
+        font-weight: 700;
+        color: #EAEAEA;
+        background: linear-gradient(180deg, rgba(24,24,26,.9), rgba(10,10,11,.95));
+      }
+      .token::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.08) 50%, transparent 70%);
+        transform: translateX(-120%);
+        transition: transform .9s ease;
+        pointer-events: none;
+      }
+      .token:hover::after { transform: translateX(120%); }
+
+      /* FINAL */
+      .final { text-align: center; }
+      .final-banner-wrap {
+        position: relative;
+        width: min(100%, 960px);
+        margin: 0 auto 1.6rem;
+        border-radius: 18px;
+        overflow: hidden;
+      }
+      .final-banner {
+        width: 100%;
+        display: block;
+      }
+      .final-banner-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 60%, rgba(6,7,10,.6) 100%);
+        pointer-events: none;
+      }
+      .manifest {
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 720px;
+        margin: 0 auto;
+        font-size: clamp(.95rem, 1.6vw, 1.05rem);
+      }
+      .contract-box {
+        margin: 1.8rem auto 0;
+        max-width: 720px;
+        padding: 1.1rem 1.2rem;
+        text-align: left;
+      }
+      .contract-label {
+        margin: 0;
+        color: var(--muted);
+        letter-spacing: .24em;
+        text-transform: uppercase;
+        font-size: .72rem;
+        font-family: var(--font-body);
+        font-weight: 600;
+      }
+      .contract-value {
+        margin: .5rem 0 0;
+        font-size: clamp(1rem, 2.2vw, 1.15rem);
+        letter-spacing: .1em;
+        font-weight: 700;
+        font-family: var(--font-display);
+        background: linear-gradient(90deg, #FFFFFF 0%, #9A9A9A 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .links {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: .7rem;
+      }
+      .links a {
+        display: inline-flex;
+        align-items: center;
+        gap: .55rem;
+        border: 1px solid var(--line-strong);
+        padding: .75rem 1.2rem;
+        min-height: 2.8rem;
+        border-radius: 999px;
+        font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: .78rem;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: var(--text);
+        background: rgba(255,255,255,.02);
+        text-decoration: none;
+        transition: background .3s ease, transform .3s ease, border-color .3s ease, color .3s ease;
+      }
+      .links a:hover {
+        background: rgba(255,255,255,.08);
+        border-color: rgba(255,255,255,.6);
+        transform: translateY(-2px);
+      }
+      .links a .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #fff;
+        opacity: .75;
+      }
+      .closing-line {
+        margin-top: 1.8rem;
+        letter-spacing: .3em;
+        font-weight: 900;
+        font-size: 1rem;
+        background: linear-gradient(90deg, #EDEDED, #6B6B6B);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* reveal-on-scroll */
+      .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s ease, transform .9s ease; }
+      .reveal.in { opacity: 1; transform: none; }
+
+      @media (max-width: 560px) {
+        .hero { min-height: 100vh; }
+        .panel { min-height: 260px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main id="site" class="site">
+      <section class="section hero">
+        <span class="eyebrow reveal">The Entity</span>
+        <div class="hero-logo-wrap reveal">
+          <img class="hero-logo" src="./assets/hero_logo_1x1.png" alt="Unbeatable logo" />
+        </div>
+        <h1 class="reveal">I'M UNBEATABLE.<br/>I CAN'T BE BEAT.</h1>
+        <p class="subtitle reveal">Not a hero. Not a villain. A state of mind.</p>
+        <div class="mini-video reveal">
+          <video
+            id="heroVideo"
+            src="./assets/intro.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          ></video>
+          <button id="soundToggle" class="sound-toggle" type="button" aria-label="Toggle sound">
+            <span class="sound-icon">SOUND OFF</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="split">
+          <article class="card panel beatable reveal" aria-label="Beatable">
+            <h2>Beatable</h2>
+            <p>Lives from outside validation. Burns in FOMO. Breaks on the first red candle.</p>
+          </article>
+          <article class="card panel unbeatable reveal" aria-label="Unbeatable">
+            <h2>Unbeatable</h2>
+            <p>Uses chaos as fuel. Stays focused. No flinch under pressure.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="protocol-head reveal">
+          <span class="eyebrow">Language</span>
+          <h2>Unbeatable Protocol</h2>
+        </div>
+        <div class="protocol-grid">
+          <div class="card token reveal">CAN'T BE BEAT</div>
+          <div class="card token reveal">UNBEATEN MODE</div>
+          <div class="card token reveal">NO FLINCH</div>
+          <div class="card token reveal">STAY UNBEATABLE</div>
+        </div>
+      </section>
+
+      <section class="section final">
+        <span class="eyebrow reveal">Join The Entity</span>
+        <h2 class="reveal" style="margin-top:1rem">When you decide quitting isn't an option</h2>
+        <p class="manifest reveal">
+          When everything was designed to break you, something learned not to break.
+          <br />
+          They called it many things. We call it Unbeatable.
+        </p>
+        <div class="card contract-box reveal">
+          <p class="contract-label">Contract</p>
+          <p class="contract-value">CA coming soon</p>
+        </div>
+        <div class="links reveal">
+          <a
+            href="https://x.com/i/communities/2033550095082246370"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Join the Unbeatable community on X"
+          >
+            <span class="dot" aria-hidden="true"></span>
+            Community
+          </a>
+          <a
+            href="https://vt.tiktok.com/ZS9ec1mYq/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Watch the Unbeatable origin video on TikTok"
+          >
+            <span class="dot" aria-hidden="true"></span>
+            TikTok
+          </a>
+        </div>
+        <p class="closing-line reveal">STAY UNBEATABLE.</p>
+      </section>
+    </main>
+
+    <script>
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+        }
+      }, { threshold: 0.12 });
+      document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+      const heroVideo = document.getElementById("heroVideo");
+      const soundBtn  = document.getElementById("soundToggle");
+      if (heroVideo && soundBtn) {
+        const label = soundBtn.querySelector(".sound-icon");
+        function setMuted(m) {
+          heroVideo.muted = m;
+          if (m) {
+            soundBtn.classList.remove("on");
+            label.textContent = "SOUND OFF";
+          } else {
+            soundBtn.classList.add("on");
+            label.textContent = "SOUND ON";
+            heroVideo.play().catch(() => {});
+          }
+        }
+        soundBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setMuted(!heroVideo.muted);
+        });
+        heroVideo.addEventListener("click", () => setMuted(!heroVideo.muted));
+      }
+    </script>
+  </body>
+</html>
